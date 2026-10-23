@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hyperliquid Funding Dashboard</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<header>
+  <h1>Hyperliquid Funding Dashboard</h1>
+  <span id="status" class="muted">Loading…</span>
+</header>
+<main>
+  <section class="cards">
+    <div class="card"><h2>Highest funding (longs pay)</h2><ol id="top-pos"></ol></div>
+    <div class="card"><h2>Most negative (shorts pay)</h2><ol id="top-neg"></ol></div>
+    <div class="card">
+      <h2>Alert thresholds</h2>
+      <label>APR above <input id="high" type="number" value="50">%</label>
+      <label>APR below <input id="low" type="number" value="-25">%</label>
+      <label>Min OI <input id="minoi" type="number" value="1">M USD</label>
+      <button id="notify">Enable browser notifications</button>
+      <div id="alerts" class="chips"></div>
+    </div>
+  </section>
+  <section class="card">
+    <h2 id="coin-title">History</h2>
+    <div id="chart"></div>
+    <p id="coin-stats" class="muted"></p>
+  </section>
+  <section class="card">
+    <input id="search" placeholder="Filter coin…">
+    <table>
+      <thead><tr>
+        <th data-sort="coin">Coin</th><th data-sort="funding">Funding / h</th><th data-sort="apr">APR</th>
+        <th data-sort="oiUsd">Open interest</th><th data-sort="volumeUsd">24h volume</th><th>HL vs CEX (APR)</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+</main>
+<footer class="muted">Data: Hyperliquid public info API. Read-only, no wallet. Not financial advice.</footer>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
